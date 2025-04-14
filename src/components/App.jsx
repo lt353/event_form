@@ -1,16 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
 function App() {
+
+  const[headingText, setHeadingText] = useState("Hello");
+  const[mouseOver, setMouseOver] = useState(false);
+
+  function handleClick() {
+    setHeadingText("Submitted");
+  }
+  function handleMouseOver() {
+    setMouseOver(true);
+  }
+  
+  function handleMouseOut() {
+    setMouseOver(false);
+  }
+
   return (
-    <div>
-      <h1>Hello World!</h1>
-      <p>This is a simple template react app.</p>
-      <p>Feel free to modify it as you like.</p>
-      <p>Happy coding!</p>
+    <div className="container">
+      <h1>{headingText}</h1>
+      <input type="text" placeholder="What's your name?" />
+      <button 
+        style={{ backgroundColor: mouseOver ? "black" : "white"}}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+        >
+          Submit
+        </button>
     </div>
   );
 }
 
 export default App;
+
 
 
